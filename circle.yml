@@ -4,6 +4,7 @@ general:
 
 machine:
     environment:
+        TERM: dumb
         ANDROID_HOME: /usr/local/android-sdk-linux
         GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"'
 
@@ -22,5 +23,9 @@ dependencies:
 
 test:
     override:
-        - (./gradlew assemble):
+        - (./gradlew assembleRelease):
             timeout: 360
+            
+        - cp -r my-project/build/outputs $CIRCLE_ARTIFACTS
+        - cp -r my-project/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
+        
