@@ -1,7 +1,3 @@
-general:
-    artifacts:
-        - /home/ubuntu/CriminalIntent/app/build/outputs/apk/
-
 machine:
     environment:
         TERM: dumb
